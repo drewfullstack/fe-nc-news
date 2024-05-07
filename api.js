@@ -16,4 +16,10 @@ function getComments(article_id) {
   );
 }
 
-export { getArticles, getArticle, getComments };
+function patchArticle(article_id, vote) {
+  return axios.patch(
+    `https://nc-news-api-ybcs.onrender.com/api/articles/${article_id}`,
+    { inc_votes: vote }
+  );
+}
+export { getArticles, getArticle, getComments, patchArticle };
