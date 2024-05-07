@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #b81900;
+  color: #fff;
+}
+
+.header-title {
+  margin: 0;
+}
+
+.home-btn,
+.user-icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+}
