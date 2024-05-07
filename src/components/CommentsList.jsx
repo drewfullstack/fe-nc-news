@@ -19,12 +19,13 @@ function CommentsList({ article_id }) {
     <div>
       {isLoading ? (
         <p>Loading, please wait</p>
-      ) : (
+      ) : comments.length > 0 ? (
         comments.map((comment) => {
           return <CommentCard key={comment.comment_id} comment={comment} />;
         })
+      ) : (
+        <p>No Comments Yet</p>
       )}
-      {}
     </div>
   );
 }
