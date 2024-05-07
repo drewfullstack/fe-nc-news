@@ -1,0 +1,42 @@
+.article-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin: 20px;
+}
+
+.article-content {
+  margin: 25px;
+}
+
+.article-content p {
+  margin: 5px 0;
+}
+
+.article-content img {
+  margin: 15px 0;
+}
+
+.related-stories {
+  background-color: #f2f2f296;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-container {
+    grid-template-columns: 1fr;
+
+    margin: 0;
+  }
+
+  .article-content {
+    margin: 5px;
+  }
+
+  .article-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 15px 0;
+  }
+}
