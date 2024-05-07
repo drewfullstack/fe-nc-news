@@ -1,0 +1,43 @@
+/* Layout for mobile (one column layout) */
+.articles-list h2 {
+  text-align: center;
+}
+
+.articles-list ul {
+  padding-left: 0;
+}
+.article-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.article-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.article-card h3,
+.article-card p {
+  margin: 0;
+}
+/* Media query for larger screen sizes (switch to 2 column layout) */
+@media screen and (min-width: 600px) {
+  .article-card {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .article-card img {
+    width: 150px;
+    grid-row: span 2;
+  }
+}
