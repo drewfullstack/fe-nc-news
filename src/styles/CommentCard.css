@@ -4,3 +4,7 @@
   border-radius: 10px;
   margin-bottom: 5px;
 }
+
+.delete-in-progress {
+  color: rgba(128, 128, 128, 0.25);
+}

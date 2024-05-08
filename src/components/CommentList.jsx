@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getComments } from "../../api";
 import CommentCard from "./CommentCard";
 
-function CommentsList({ article_id, comments, setComments }) {
+function CommentsList({ article_id, comments, setComments, user }) {
   useEffect(() => {
     getComments(article_id).then((commentsData) => {
       setComments(commentsData.data.comments);
@@ -12,7 +12,15 @@ function CommentsList({ article_id, comments, setComments }) {
   return (
     <div>
       {comments.map((comment) => {
-        return <CommentCard key={comment.comment_id} comment={comment} />;
+        return (
+          <CommentCard
+            key={comment.comment_id}
+            comment={comment}
+            comments={comments}
+            setComments={setComments}
+            user={user}
+          />
+        );
       })}
     </div>
   );
