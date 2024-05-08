@@ -6,6 +6,13 @@
   background-color: #b81900;
   color: #fff;
 }
+.link h1 {
+  color: white;
+}
+
+.link:hover h1 {
+  text-decoration: underline;
+}
 
 .header-title {
   margin: 0;
