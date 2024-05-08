@@ -1,0 +1,46 @@
+/* Layout for mobile (one column layout) */
+.users-list h2 {
+  text-align: center;
+}
+
+.users-list ul {
+  padding-left: 0;
+}
+.user-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-card img {
+  width: auto;
+  height: 150px;
+  border-radius: 5px;
+  justify-self: center;
+  align-self: center;
+}
+
+.user-card h3,
+.user-card p {
+  margin: 0;
+}
+/* Media query for larger screen sizes (switch to 2 column layout) */
+@media screen and (min-width: 600px) {
+  .user-card {
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .user-card img {
+    width: auto;
+    height: 150px;
+    grid-row: span 2;
+  }
+}

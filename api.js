@@ -22,4 +22,23 @@ function patchArticle(article_id, vote) {
     { inc_votes: vote }
   );
 }
-export { getArticles, getArticle, getComments, patchArticle };
+
+function getUsers() {
+  return axios.get(`https://nc-news-api-ybcs.onrender.com/api/users`);
+}
+
+function postComment(article_id, username, body) {
+  return axios.post(
+    `https://nc-news-api-ybcs.onrender.com/api/articles/${article_id}/comments`,
+    { username, body }
+  );
+}
+
+export {
+  getArticles,
+  getArticle,
+  getComments,
+  patchArticle,
+  getUsers,
+  postComment,
+};
