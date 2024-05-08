@@ -9,7 +9,6 @@ function ArticlesList({ topic }) {
 
   useEffect(() => {
     getArticles().then((articles) => {
-      console.log(articles.data.articles);
       setArticles(articles.data.articles);
       setIsLoading(false);
     });

@@ -111,6 +111,7 @@ function ArticlePage({ user }) {
                 article_id={article_id}
                 comments={comments}
                 setComments={setComments}
+                user={user}
               />
             </div>
 

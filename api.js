@@ -34,6 +34,12 @@ function postComment(article_id, username, body) {
   );
 }
 
+function deleteComment(comment_id) {
+  return axios.delete(
+    `https://nc-news-api-ybcs.onrender.com/api/comments/${comment_id}`
+  );
+}
+
 export {
   getArticles,
   getArticle,
@@ -41,4 +47,5 @@ export {
   patchArticle,
   getUsers,
   postComment,
+  deleteComment,
 };

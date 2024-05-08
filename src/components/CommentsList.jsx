@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getComments } from "../../api";
 import CommentCard from "./CommentCard";
 
-function CommentsList({ article_id, comments, setComments }) {
+function CommentsList({ article_id, comments, setComments, user }) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,15 @@ function CommentsList({ article_id, comments, setComments }) {
         <p>Loading, please wait</p>
       ) : comments.length > 0 ? (
         comments.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              comments={comments}
+              setComments={setComments}
+              user={user}
+            />
+          );
         })
       ) : (
         <p>No Comments Yet</p>
