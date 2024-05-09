@@ -71,7 +71,10 @@ function ArticlePage({ user }) {
               <h1>{article.title}</h1>
               <p>Created On: {article.created_at}</p>
               <p>Author: {article.author}</p>
-              <p>Topic: {article.topic}</p>
+              <p>
+                Topic:{" "}
+                <Link to={`/category/${article.topic}`}>{article.topic} </Link>
+              </p>
               <img src={article.article_img_url} alt="" />
               <p>{article.body}</p>
 
