@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getArticles } from "../../api";
 import ArticleCard from "./ArticleCard";
 import "../styles/ArticlesList.css";
@@ -6,6 +7,11 @@ import "../styles/ArticlesList.css";
 function ArticlesList({ topic }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { category } = useParams();
+
+  if (category) {
+    topic = category;
+  }
 
   useEffect(() => {
     getArticles().then((articles) => {

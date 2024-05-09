@@ -18,6 +18,7 @@ function App() {
           path="/articles/:article_id"
           element={<ArticlePage user={user} />}
         ></Route>
+        <Route path="/category/:category" element={<ArticleList />}></Route>
       </Routes>
     </>
   );
