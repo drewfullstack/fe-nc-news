@@ -42,6 +42,10 @@ function deleteComment(comment_id) {
   );
 }
 
+function getTopics() {
+  return axios.get(`https://nc-news-api-ybcs.onrender.com/api/topics`);
+}
+
 export {
   getArticles,
   getArticle,
@@ -50,4 +54,5 @@ export {
   getUsers,
   postComment,
   deleteComment,
+  getTopics,
 };

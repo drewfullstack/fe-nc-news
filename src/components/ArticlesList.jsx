@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "../../api";
+import { getArticles, getTopics } from "../../api";
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import ArticleFilters from "./ArticleFilters";
 import "../styles/ArticlesList.css";
@@ -16,6 +16,8 @@ function ArticlesList({ topic }) {
   const [topicFilter, setTopicFilter] = useState("");
   const [sortByFilter, setSortByFilter] = useState("date");
   const [orderFilter, setOrderFilter] = useState("ascending");
+  const [isTopicFound, setIsTopicFound] = useState(true);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   if (category) {
@@ -48,13 +50,34 @@ function ArticlesList({ topic }) {
     if (queries?.split("")[0] !== "?") {
       queries = undefined;
     }
-
+    if (category) {
+      getTopics().then((topicData) => {
+        for (const topic of topicData.data.topics) {
+          if (category === topic.slug) {
+            setIsTopicFound(true);
+            return;
+          } else {
+            setIsTopicFound(false);
+          }
+        }
+      });
+    }
     getArticles(queries).then((articles) => {
       setArticles(articles.data.articles);
       setIsLoading(false);
     });
   }, [searchParams]);
 
+  if (!isTopicFound && category) {
+    return (
+      <>
+        <h1>{`No articles on ${category}`}</h1>
+        <Link to={`/articles`}>
+          <button>All Articles</button>
+        </Link>
+      </>
+    );
+  }
   if (isLoading) {
     return <p>LOADING</p>;
   } else {
