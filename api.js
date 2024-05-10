@@ -1,7 +1,9 @@
 import axios from "axios";
 
-function getArticles() {
-  return axios.get("https://nc-news-api-ybcs.onrender.com/api/articles");
+function getArticles(queries = "") {
+  return axios.get(
+    `https://nc-news-api-ybcs.onrender.com/api/articles${queries}`
+  );
 }
 
 function getArticle(article_id) {
