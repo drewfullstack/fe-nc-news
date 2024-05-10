@@ -5,6 +5,7 @@ import "../styles/ArticlePage.css";
 import ArticlesList from "./ArticlesList";
 import CommentsList from "./CommentsList";
 import CommentForm from "./CommentForm";
+import NotFoundPage from "./NotFoundPage";
 
 function ArticlePage({ user }) {
   const [article, setArticle] = useState(null);
@@ -14,19 +15,28 @@ function ArticlePage({ user }) {
   const [isLeavingComment, setIsLeavingComment] = useState(false);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isArticleNotFound, setIsArticleNotFound] = useState(false);
 
   useEffect(() => {
     setHasDownvoted(false);
     setHasUpvoted(false);
-    getArticle(article_id).then((articleData) => {
-      const dateArray = articleData.data.article.created_at.split("-");
-      dateArray.splice(1, 0, " ");
-      const formattedDate = dateArray.slice(0, 3);
-      articleData.data.article["created_at"] = formattedDate;
-      setIsLoading(false);
-      setArticle(articleData.data.article);
-    });
-  }, [article_id]);
+    getArticle(article_id)
+      .then((articleData) => {
+        const dateArray = articleData.data.article.created_at.split("-");
+        dateArray.splice(1, 0, " ");
+        const formattedDate = dateArray.slice(0, 3);
+        articleData.data.article["created_at"] = formattedDate;
+        setIsLoading(false);
+        setArticle(articleData.data.article);
+      })
+      .catch(
+        (err) => {
+          setIsArticleNotFound(true);
+          setIsLoading(false);
+        },
+        [article_id]
+      );
+  });
 
   function handleUpvote() {
     let newVoteCount = 0;
@@ -83,6 +93,7 @@ function ArticlePage({ user }) {
 
   return (
     <>
+      {isArticleNotFound && <NotFoundPage />}
       {isLoading && <p>Loading, please wait...</p>}
       <div className="article-container">
         {article && (

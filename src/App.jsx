@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import ArticlePage from "./components/ArticlePage";
 import UsersList from "./components/UsersList";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,6 +20,7 @@ function App() {
           element={<ArticlePage user={user} />}
         ></Route>
         <Route path="/category/:category" element={<ArticleList />}></Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
