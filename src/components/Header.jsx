@@ -8,7 +8,7 @@ function Header({ user }) {
     <div className="header">
       <div className="header-left">
         <Link to={`/`}>
-          <button className="home-btn">Home</button>
+          <button className="home-btn bold">Home</button>
         </Link>
       </div>
       <div className="header-center">
@@ -16,6 +16,7 @@ function Header({ user }) {
           <h1 className="header-title">NC NEWS</h1>
         </Link>
       </div>
+
       <div className="header-right">
         {user ? (
           <Link to={`/`}>

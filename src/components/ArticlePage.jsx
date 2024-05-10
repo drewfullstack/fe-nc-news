@@ -16,6 +16,8 @@ function ArticlePage({ user }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setHasDownvoted(false);
+    setHasUpvoted(false);
     getArticle(article_id).then((articleData) => {
       const dateArray = articleData.data.article.created_at.split("-");
       dateArray.splice(1, 0, " ");
@@ -27,11 +29,20 @@ function ArticlePage({ user }) {
   }, [article_id]);
 
   function handleUpvote() {
+    let newVoteCount = 0;
+    let voteChange = 0;
+    if (hasDownvoted) {
+      voteChange = 2;
+      newVoteCount = article.votes + 2;
+    } else {
+      voteChange = 1;
+      newVoteCount = article.votes + 1;
+    }
+
     setHasUpvoted(true);
     setHasDownvoted(false);
-    const newVoteCount = article.votes + 1;
     setArticle({ ...article, votes: newVoteCount });
-    patchArticle(article_id, 1)
+    patchArticle(article_id, voteChange)
       .then((articleData) => {
         setArticle(articleData.data.article);
       })
@@ -42,11 +53,20 @@ function ArticlePage({ user }) {
       });
   }
   function handleDownvote() {
+    let newVoteCount = 0;
+    let voteChange = 0;
+    if (hasUpvoted) {
+      voteChange = -2;
+      newVoteCount = article.votes - 2;
+    } else {
+      voteChange = -1;
+      newVoteCount = article.votes - 1;
+    }
     setHasDownvoted(true);
     setHasUpvoted(false);
-    const newVoteCount = article.votes - 1;
+
     setArticle({ ...article, votes: newVoteCount });
-    patchArticle(article_id, -1)
+    patchArticle(article_id, voteChange)
       .then((articleData) => {
         setArticle(articleData.data.article);
       })

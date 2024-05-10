@@ -1,4 +1,19 @@
 /* Layout for mobile (one column layout) */
+.topic-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  font-size: 1rem;
+  border: 1px solid black;
+  border-radius: 10%;
+  margin: 10px 5px;
+}
+
+.topic-btn:hover {
+  text-decoration: underline;
+}
+
 .articles-list h2 {
   text-align: center;
 }

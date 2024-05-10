@@ -26,6 +26,10 @@
   color: #fff;
 }
 
+.bold {
+  font-weight: 900;
+}
+
 .user-icon {
   width: 30px;
   height: 30px;
